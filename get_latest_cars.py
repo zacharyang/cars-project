@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import settings
 import time 
 import json 
-import regex as re
+import re
 import numpy as np
 import datetime
 
@@ -103,7 +103,7 @@ def collect_cars(car_urls):
 if __name__ == '__main__':
 
 
-    latest_listings_fp='./data/cache/new_listings_{}-{}.json'.format(datetime.datetime.now().day,datetime.datetime.now().month)
+    latest_listings_fp='~/cars-project/data/cache/new_listings_{}-{}.json'.format(datetime.datetime.now().day,datetime.datetime.now().month)
     
     
     try:

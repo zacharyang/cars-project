@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import settings
 import time 
 import json 
-import regex as re
+import re
 import datetime
 
 def collect_latest_listings(car_types):
