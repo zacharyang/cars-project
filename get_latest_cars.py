@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
     c_1=c+cars
 
-    with open ('./data/master/car_data_master.json','w') as outfile:
+    with open ('./data/master/car_data_master.json','w+') as outfile:
         json.dump(c_1,outfile)
 
 
@@ -140,6 +140,6 @@ if __name__ == '__main__':
 
     s_1=s+sellers
 
-    with open ('./data/master/seller_data_master.json','w') as outfile:
+    with open ('./data/master/seller_data_master.json','w+') as outfile:
         json.dump(s_1,outfile)
 
