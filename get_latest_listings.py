@@ -59,26 +59,26 @@ def collect_latest_listings(car_types):
     return car_dat
 
 
-def update_master(car_dat,master):
+def update_master(listings,master):
 
-    keep_ind=[i for i,a in enumerate(car_dat['query_urls']) if a not in master['query_urls']]
+    keep_ind=[i for i,a in enumerate(listings['query_urls']) if a not in master['query_urls']]
     if len(keep_ind)==0:
         print('No new listings for {}'.format(datetime.datetime.now()))
         return None, None
+    else:
+        print('Adding {} new listings to master data'.format(len(keep_ind)))
+        new_master={}
+        new_listings={}
+        for k in listings.keys():
+            new_listings[k]=[listings[k][i] for i in keep_ind]
+            new_master[k]=master[k]+listings[k]
 
-    for k in car_dat.keys():
-        car_dat[k]=[car_dat[k][i] for i in keep_ind]
-        master[k]=master[k]+car_dat[k]
-
-    return car_dat,master
+    return new_listings, new_master
 
 
 if __name__== '__main__':
 
     listing_data=collect_latest_listings(settings.CAR_TYPES)
-
-    with open('./data/cache/listing_data_{}-{}.json'.format(datetime.datetime.now().day,datetime.datetime.now().month), 'w') as outfile:
-        json.dump(listing_data, outfile)
 
     with open('./data/master/listing_data_master.json', 'r') as file:
         master=json.load(file)

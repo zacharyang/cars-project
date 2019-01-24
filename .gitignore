@@ -115,4 +115,9 @@ dmypy.json
 .pyre/
 
 # DS Store
-.DS_Store
+/.DS_Store
+
+# Not finished yet
+Untitled.ipynb
+cleaning.ipynb
+

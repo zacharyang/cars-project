@@ -53,10 +53,11 @@ def collect_cars(car_urls):
         img_links=list(set([i.get('src') for i in soup.find_all('img') if i.get('src').split('/')[3]=='cars_used' and i.get('src').split('/')[4] != 'sold_tag.gif']))
         list_title=soup.find_all('a',class_="link_redbanner")[0].text
         brand=soup.find_all('a',class_="link_redbanner")[0].text.split(' ')[0]
+        date_of_listing=datetime.datetime.now()
 
         # Add this to feature list, and add the labels too # 
-        car_labels+= ['img_links','list_title','brand']
-        car_feats += [img_links,list_title,brand]
+        car_labels+= ['img_links','list_title','brand','date_of_listing']
+        car_feats += [img_links,list_title,brand,date_of_listing]
 
         # Zip it up and append # 
         car_dict=dict(zip(car_labels,car_feats))
