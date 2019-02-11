@@ -121,3 +121,6 @@ dmypy.json
 Untitled.ipynb
 cleaning.ipynb
 
+# SQL
+
+data/backup.sql

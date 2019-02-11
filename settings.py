@@ -12,4 +12,3 @@ CAR_REF={
 CAR_TYPES=['Luxury Sedan','Mid Sized Sedan', 'Hatchback','MPV','SUV','Sports','Stationwagon']
 
 NUMERIC_COLS=['ARF','COE','Curb Weight','Depreciation','Dereg Value','Engine Cap','Mileage','No. of Owners','OMV','Power','Price','Road Tax']
-
