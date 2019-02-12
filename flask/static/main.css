@@ -1,0 +1,68 @@
+html {
+    font-family: 'Didact Gothic', sans-serif;
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(195, 236, 250)
+}
+
+
+h1 {
+	font-size: 40px;
+	margin: 25px 50px 75px 20px
+}
+
+.container{
+
+	height: 600px;
+	width: 100%;
+	margin-left: 50px;
+}
+
+.small-row {
+ 	height: 80px;
+	width: 1000px;
+	margin-top: 25px;
+}
+
+.big-row {
+ 	height: 400px;
+	width: 80%;
+	margin-top: 25px;
+}
+
+
+.col-narrow{
+  	width: 30%;
+    height: 500px;
+    float: left;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.col-wide{
+  	margin-left: 15%;
+    height: 500px;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 20px;
+    text-align:justify;
+
+
+}
+
+p {
+    display: block;
+    line-height: 125%
+}
+
+i{
+	margin-right: 10px
+}
+a{
+    margin-right: 10px;
+}
