@@ -24,12 +24,7 @@ Flask==1.0.2
 Flask-Compress==1.4.0
 gast==0.2.2
 grpcio==1.18.0
-h5py==2.9.0
 idna==2.8
-ipykernel==5.1.0
-ipython==7.2.0
-ipython-genutils==0.2.0
-ipywidgets==7.4.2
 itsdangerous==1.1.0
 jedi==0.13.2
 Jinja2==2.10
@@ -43,7 +38,7 @@ kiwisolver==1.0.1
 lxml==4.3.0
 Markdown==3.0.1
 MarkupSafe==1.1.0
-matplotlib==3.0.2
+matplotlib==2.2.3
 mistune==0.8.4
 nbconvert==5.4.1
 nbformat==4.4.0

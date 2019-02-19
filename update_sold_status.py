@@ -85,8 +85,14 @@ def update_sold_status(update_df):
 
 if __name__ == '__main__':
 
-    connection=psycopg2.connect(DB_CONN_LOCAL)
-    engine = create_engine(DB_URL)
+
+    def connect():
+        
+        return psycopg2.connect(host=DB_URL,database="sgcarmart", user=DB_USER, password=DB_PASSWORD)
+
+    engine = create_engine('postgresql://',creator=connect)
+
+
 
     available_car_urls=pd.read_sql(available_cars,engine)
     sold_cars=collect_main_pages(settings.CAR_TYPES,get_sold=True)

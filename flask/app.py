@@ -9,11 +9,15 @@ from collections import defaultdict
 from sklearn.externals import joblib
 import datetime
 from dateutil.relativedelta import relativedelta
+from private import *
 
 
+def connect():
+    
+    return psycopg2.connect(host=DB_URL,database="sgcarmart", user=DB_USER, password=DB_PASSWORD)
 
-connection=psycopg2.connect("host=localhost dbname=sgcarmart user=postgres password=postgres")
-engine = create_engine('postgresql://localhost:5432/sgcarmart')
+engine = create_engine('postgresql://',creator=connect)
+
 
 
 supported_model_query='''

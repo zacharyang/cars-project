@@ -29,9 +29,12 @@ if __name__== '__main__':
 
 
     ## Open connection to DB # 
-    connection=psycopg2.connect(DB_CONN_LOCAL)
 
-    engine = create_engine(DB_URL)
+    def connect():
+        
+        return psycopg2.connect(host=DB_URL,database="sgcarmart", user=DB_USER, password=DB_PASSWORD)
+
+    engine = create_engine('postgresql://',creator=connect)
 
     # Collect latest listings # 
 
