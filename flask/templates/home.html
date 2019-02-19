@@ -6,37 +6,256 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Cabin+Condensed:400,700|Chivo:400,700,700i|Didact+Gothic|Gentium+Book+Basic:400,700|Tajawal:400,700|Varela|Zilla+Slab" rel="stylesheet">
+	<!--===============================================================================================-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Rubik:400,500" rel="stylesheet">
+	<!--===============================================================================================-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='main.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='custom.css')}}">
-	<title> Home </title>
+
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='select2/select2.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css')}}">
+
+	<title> Ask Ah Seng </title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
 
-	  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-	    <a class="navbar-brand" href="#">Hidden brand</a>
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Link</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link disabled" href="#">Disabled</a>
-	      </li>
-	    </ul>
-	  </div>
+	<div class='form-container'>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<div class='wrap-container'>
+
+			<div class='title'>
+			Ask Ah Seng
+			</div>
+
+			<form method='post' action='/results'>
+				<div class='wrap-input-dropdown'>
+					<span class='label-input'>Model</span>
+					<select class='dropdown model-dropdown form-control' name='model' id='select-model'></select>
+				</div>
+
+				<div class='wrap-input-dropdown'>
+					<span class='label-input'> Original Year and Month of Registration</span>
+					<div class="form-row">
+					    <div class="col">
+					    	<select class='month-dropdown form-control ' id='reg_month' name='reg_month'></select>
+					    </div>
+					    <div class="col">
+					      <input type="text" class="form-control select2-container--default" id='reg_year' name='reg_year'placeholder="2010">
+					    </div>
+
+					    <div class='wrap-input-checkbox'>
+							<span class='label-input'>
+								<span class='label-input'>Extended COE?</span>
+
+									<input class='checkbox-mini' type="checkbox" name="coe_extend" value=5>5 years
+									<input class='checkbox-mini' type="checkbox" name="coe_extend" value=10>10 years
+
+							</span>
+
+						</div>
+
+    					<div class='wrap-input-smallbutton'>
+							<button id='autofill' class="smallbtn" type="submit">Auto-Fill</button>
+						</div>
+					</div>
+
+				</div>
+
+
+
+				<div class='wrap-input'>
+					<span class='label-input'>Mileage</span>
+					<input class='input' type='number' id='mileage' name='mileage' placeholder='123198'>
+					<span class="focus-input"></span>
+				</div>
+
+				<div class='wrap-input'>
+					<div class="form-row">
+						<div class='col'>
+							<span class='small-label-input'>COE<span>
+							<input class='input' type='number' id='coe' name='coe' placeholder='20000'>
+						</div>
+						<div class='col'>
+							<span class='small-label-input'>OMV<span>
+							<input class='input' type='number' id='omv' name='omv' placeholder='13120'>
+						</div>
+
+					</div>
+				</div>
+
+
+				<div class='wrap-input'>
+					<div class="form-row">
+						<div class='col'>
+							<span class='small-label-input'>Power (kW)<span>
+							<input class='input' type='number' id='power' name='power' placeholder='130'>
+						</div>
+						<div class='col'>
+							<span class='small-label-input'>Engine Capacity (cc)<span>
+							<input class='input' type='number' id='engine_cap' name='engine_cap' placeholder='1500'>
+						</div>
+						<div class='col'>
+							<span class='small-label-input'>Curb Weight (kg)<span>
+							<input class='input' type='number' id='curb_weight' name='curb_weight' placeholder='2000'>
+						</div>
+
+
+					</div>
+				</div>
+
+				<div class='wrap-input-button'>
+					<button id='predict' class="btn btn-primary button" type="submit">Submit</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<!--===============================================================================================-->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='sweetalert2.all.js') }}"></script>
+	<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='select2/select2.min.js') }}"></script>
+
+	<script type="text/javascript">
+		$(function () {
+	        $("button#predict").click(function(e){
+	        	e.preventDefault();
+	        	$.ajax({
+	        		method : "POST",
+	        		url : window.location.href + 'results',
+	        		data : $('form').serialize(),
+	        		success : function(result){
+	        			var json_result = JSON.parse(result);
+	        			var price= json_result['price'];
+	        			swal('Predicted car price is $'+price, '','success')
+	        		},
+	        		error : function(){
+	        			console.log("error")
+	        		}
+	        	})
+	        })
+	    
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(function () {
+	        $("button#autofill").click(function(e){
+	        	e.preventDefault();
+	        	var model = document.getElementById('select-model').value;
+	        	var reg_month= $('#reg_month :selected').text();
+	        	var reg_year= document.getElementById('reg_year').value;
+	        	var coe_extend=$("input[name='coe_extend']:checked").val();
+	        	var data={'model':model,'reg_month':reg_month,'reg_year':reg_year,'coe_extend':coe_extend};
+	        	$.ajax({
+	        		method : "POST",
+	        		url : window.location.href + 'autofill',
+	        		data : JSON.stringify(data),
+	        		contentType: 'application/json',
+	        		dataType: 'json',
+	        		success : function(json_result){
+	        			// var json_result = JSON.parse(result);
+	        			var power=json_result['est_power'];
+	        			var engine_cap=json_result['est_engine_cap'];
+	        			var curb_weight = json_result['est_curb_weight'];
+	        			var omv= json_result['est_omv'];
+	        			var coe= json_result['est_coe']
+	        			document.getElementById('power').value=power
+	        			document.getElementById('engine_cap').value=engine_cap
+	        			document.getElementById('curb_weight').value=curb_weight
+	        			document.getElementById('omv').value=omv
+	        			document.getElementById('coe').value=coe
+
+	        		},
+	        		error : function(){
+	        			console.log("error")
+	        		}
+	        	})
+	        })
+	    
+		});
+	</script>
+
+
+	<script>
+		
+		var data = {{ models|tojson }};
+
+		$(".model-dropdown").select2({
+		  data: data
+		})
+	</script>
+
+	<script>
+		
+		var months = [
+				    {
+				        'id': 0,
+				        'text': 'Jan'
+				    },
+				    {
+				        'id': 1,
+				        'text': 'Feb'
+				    },
+				    {
+				        'id': 2,
+				        'text': 'Mar'
+				    },
+				    {
+				        'id': 3,
+				        'text': 'Apr'
+				    },
+				    {
+				        'id': 4,
+				        'text': 'May'
+				    },
+				    {
+				        'id': 5,
+				        'text': 'May'
+				    },				  
+				    {
+				        'id': 6,
+				        'text': 'Jul'
+				    },
+				    {
+				        'id': 7,
+				        'text': 'Aug'
+				    },
+				    {
+				        'id': 8,
+				        'text': 'Sep'
+				    },
+				    {
+				        'id': 9,
+				        'text': 'Oct'
+				    },
+				    {
+				        'id': 10,
+				        'text': 'Nov'
+				    },
+				    {
+				        'id': 11,
+				        'text': 'Dec'
+				    }
+
+				];
+
+		$(".month-dropdown").select2({
+		  data: months
+		})
+	</script>
+	<script>
+		$('input[type="checkbox"]').on('change', function() {
+		   $('input[type="checkbox"]').not(this).prop('checked', false);
+		});
+	</script>
+
 
 </body>
 </html>

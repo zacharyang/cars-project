@@ -70,6 +70,7 @@ def collect_cars(car_urls):
         img_links=list(set([i.get('src') for i in soup.find('div',attrs={'id':'gallery_holder'}).find_all('img')]))
         list_title=soup.find_all('a',class_="link_redbanner")[0].text
         brand=soup.find_all('a',class_="link_redbanner")[0].text.split(' ')[0]
+
         model= re.sub(r'\([^)]*\)', '',list_title).strip(' ')
 
         ## Clean up Date features # 
@@ -86,10 +87,15 @@ def collect_cars(car_urls):
         # Zip it up and append # 
         car_dict=dict(zip(car_labels,car_feats))
 
+        ## Special Cases ## 
         if car_dict['availability']=='SOLD':
             car_dict['days_to_sell']=(date_updated-date_posted).days 
         else:
             car_dict['days_to_sell']=np.nan
+
+        if car_dict['brand']=='Land':
+            car_dict['brand']='Land Rover'
+
         cars.append(car_dict)
 
         ### Seller table next ### 
@@ -159,7 +165,7 @@ def parse_cars(cars):
                 car[col]=re.split("[()]",car[col])[0]
             # For numeric features, clean up and convert to float # 
             if col in numeric_cols and car[col] is not np.nan:
-                car[col]=float(re.sub("[^0-9]", "",car[col]))
+                car[col]=float(re.sub("[^0-9.]", "",car[col]))
             # Convert to date time object for date cols # 
             if col in date_cols and car[col] is not np.nan:
                 car[col]=datetime.datetime.strptime(re.split('[()]',car[col])[0],'%d-%b-%Y')
