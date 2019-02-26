@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Seven Day Seng</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='select2/select2.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css')}}">
+
+	<link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icons/favicon.png')}}"/>
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
+<!--===============================================================================================-->
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/dashboard.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css')}}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" id='main' action='/proba'>
+				<span class="contact100-form-title">
+					Seven Day Seng
+				</span>
+
+
+				<div class="wrap-input100 validate-input" data-validate="Model is required">
+					<div class='wrap-input-dropdown'>
+						<span class='label-input100'>Model</span>
+						<select class='dropdown model-dropdown form-control' name='model' id='model'></select>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class='wrap-input-price'>
+						<span class='label-input100'>Desired Sale Price</span>
+						<input id="price" name="price" type="range" min="{{ user_data['price_lower'] }}" max="{{ user_data['price_upper'] }}" value="{{ user_data['price'] }}" class="slider">
+						<span>$<span id="price_label" class="price-label"></span></span>
+					</div>
+
+				</div>
+
+				<div class="form-row">
+					<div class="col">
+						<div class='wrap-input100'>
+							<span class='label-input100'>Month</span>
+							<select class='month-dropdown form-control' name='reg_month' id='reg_month'></select>
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="wrap-input100 validate-input" data-validate = "Year is required">
+							<label class="label-input100" for="reg_year">Year</label>
+							<input id="reg_year" class="input100" type="text" name="reg_year" placeholder="2010">
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row">
+
+					<div class="col">
+						<div class="wrap-input100 validate-input" data-validate = "Required field">
+							<label class="label-input100" for="coe">COE</label>
+							<input id="coe" class="input100" type="text" name="coe" placeholder="35000">
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="wrap-input100 validate-input" data-validate = "Required field">
+							<label class="label-input100" for="coe">OMV</label>
+							<input id="omv" class="input100" type="text" name="omv" placeholder="26000">
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class='wrap-input100'>
+						<span class='label-input100'>
+							<span>Extended COE?</span>
+
+								<input class='checkbox-mini' type="checkbox" name="coe_extend" value=5>5 years
+								<input class='checkbox-mini' type="checkbox" name="coe_extend" value=10>10 years
+
+						</span>
+
+				</div>
+				<div class="form-row">
+
+					<div class="col">
+						<div class="wrap-input100 validate-input" data-validate = "Mileage is required">
+							<label class="label-input100" for="mileage">Mileage(km)</label>
+							<input id="mileage" class="input100" type="text" name="mileage" placeholder="68390">
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="wrap-input100 validate-input" data-validate = "Required field">
+							<label class="label-input100" for="power">Power(kW)</label>
+							<input id="power" class="input100" type="text" name="power" placeholder="185">
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="form-row">
+
+					<div class="col">
+						<div class="wrap-input100 validate-input" data-validate = "Required field">
+							<label class="label-input100" for="engine_cap">Engine Cap (cc)</label>
+							<input id="engine_cap" class="input100" type="text" name="engine_cap" placeholder="1800">
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="wrap-input100 validate-input" data-validate = "Required field">
+							<label class="label-input100" for="curb_weight">Curb Weight (kg)</label>
+							<input id="curb_weight" class="input100" type="text" name="curb_weight" placeholder="2000">
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row">
+
+					<div class="col-sm">
+						<div class="wrap-input-toggle">
+							<label class="label-input-toggle" for="is_premium_ad_car">Premium Ad?</label>
+							<input type="checkbox" name="is_premium_ad_car" checked data-toggle="toggle" data-on="Yes" data-off="No" value=1>
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+
+					<div class="col-sm">
+						<div class="wrap-input-toggle">
+							<label class="label-input-toggle" for="is_direct_owner_sale">Selling Direct?</label>
+							<input type="checkbox" name="is_direct_owner_sale" checked data-toggle="toggle" data-on="Yes" data-off="No" value=1>
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form row">
+
+					<div class="col-sm">
+						<div class="wrap-input-toggle">
+							<label class="label-input-toggle" for="is_consignment_car">Consignment?</label>
+							<input type="checkbox" name="is_consignment_car" checked data-toggle="toggle" data-on="Yes" data-off="No" value=1>
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+
+					<div class="col-sm">
+						<div class="wrap-input-toggle">
+							<label class="label-input-toggle" for="is_top_dealer">Top Dealer?</label>
+							<input type="checkbox" name="is_top_dealer" checked data-toggle="toggle" data-on="Yes" data-off="No" value=1>
+							<span class="focus-input100"></span>
+						</div>
+					</div>
+
+				</div>
+
+			</form>
+
+
+			<div class="contact100-more">
+		        <div class="row metric-row">
+		        	<div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+		            	<div class="info-box txt1 blue-bg">
+					      <i class="fa fa-shopping-cart fa-3x" ></i>
+			              <div class="count" id="num_models"></div>
+			              <div class="title">Vehicles of the same model on the market now</div>
+		            	</div>
+		            </div>
+		          <!--/.col-->
+
+					<div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+					    <div class="info-box txt1 blue-bg">
+						  <i class="fas fa-search-dollar fa-3x" size=30px></i>
+					      <div class="count" id="price_comp"></div>
+					      <div class="title">Vehicles for sale in your price range</div>
+					    </div>
+					</div>
+
+					  <!--/.col-->
+
+					<div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+						<div class="info-box txt1 blue-bg">
+							<i class="fa fa-thumbs-o-up fa-3x" size=30px></i>
+							<div class="count" id="top_dealer"></div>
+							<div class="title"> is the top dealer for your model</div>
+						</div>
+					</div>
+
+
+				</div>
+			    <div class='container seng-container'>
+			    	<div class='row seng-container'>
+			    		<div class = "col-lg-8">
+				    		<div class='img-container'>
+				    			<img src="{{ url_for('static',filename='images/ah_seng.png')}}"></img>
+				    		</div>
+				    	</div>
+
+				    	<div class="col-lg-4 col-md-3 col-sm-12 col-s-12">
+							<div class="info-box txt1 grey-bg seng-say">
+								<div class='seng-predict'>
+									<div class="count predict">Your car got...</div>
+									<div class="progress">
+										<div class="progress-bar" id='chance' role="progressbar" aria-valuexmin="0" aria-valuemax="100">0%</div>
+									</div>
+									<div class="title">chance of selling within 7 days</div>
+								</div>
+
+
+							</div>
+			    		</div>
+			    	</div>
+
+			    </div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+<!--===============================================================================================-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script src="{{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/select2/select2.min.js')}}"></script>
+
+	<script>
+		
+		var data = {{ models|tojson }};
+
+		$("#model").select2({
+		  data: data
+		})
+	</script>
+
+
+	<script>
+		
+		var months = [
+				    {
+				        'id': 0,
+				        'text': 'Jan'
+				    },
+				    {
+				        'id': 1,
+				        'text': 'Feb'
+				    },
+				    {
+				        'id': 2,
+				        'text': 'Mar'
+				    },
+				    {
+				        'id': 3,
+				        'text': 'Apr'
+				    },
+				    {
+				        'id': 4,
+				        'text': 'May'
+				    },
+				    {
+				        'id': 5,
+				        'text': 'Jun'
+				    },				  
+				    {
+				        'id': 6,
+				        'text': 'Jul'
+				    },
+				    {
+				        'id': 7,
+				        'text': 'Aug'
+				    },
+				    {
+				        'id': 8,
+				        'text': 'Sep'
+				    },
+				    {
+				        'id': 9,
+				        'text': 'Oct'
+				    },
+				    {
+				        'id': 10,
+				        'text': 'Nov'
+				    },
+				    {
+				        'id': 11,
+				        'text': 'Dec'
+				    }
+
+				];
+
+		$(".month-dropdown").select2({
+		  data: months
+		})
+	</script>
+	<script>
+
+		var slider = document.getElementById("price");
+		var output = document.getElementById("price_label");
+		output.innerHTML = slider.value;
+
+		slider.oninput = function() {
+		  output.innerHTML = this.value;
+		}
+	</script>
+	<script>
+		$('input[type="checkbox"][name="coe_extend"]').on('change', function() {
+		   $('input[type="checkbox"][name="coe_extend"]').not(this).prop('checked', false);
+		});
+	</script>
+	<script>
+		var user_data = {{ user_data|tojson }}
+		$( document ).ready(function() {
+
+			if (user_data['model'] !== 'None'){
+
+		     	$("#coe").val(user_data['coe']);
+		        $("#model").val(user_data['model']);
+		        $("#model").trigger('change');
+		        $("#omv").val(user_data['omv']);
+		        $("#reg_month").val(user_data['reg_month']);
+		        $("#reg_month").trigger('change');
+		        $("#reg_year").val(user_data['reg_year']);
+		        $("#mileage").val(user_data['mileage']);
+		        $("#power").val(user_data['power']);
+		        $("#engine_cap").val(user_data['engine_cap']);
+		        $("#curb_weight").val(user_data['curb_weight']);
+
+		        if (user_data['coe_extend'] !== undefined){
+		        	$("input[name=coe_extend][type=checkbox][value="+user_data['coe_extend']+"]").prop('checked',true)
+		        }
+
+		        $.ajax({
+	        		method : "POST",
+	        		url : window.location.href + '/proba',
+	        		data : $('form').serialize(),
+	        		success : function(result){
+	        			var json_result = JSON.parse(result);
+	        			var proba= json_result['proba'];
+
+	        			$('#chance').css({
+									"background":'rgb('+ (100-proba)/100*255 + ','+proba/100*255+',0)',
+									"width":proba+'%',
+						});
+						$('#chance').text(proba+'%');
+	        		},
+	        		error : function(){
+	        			console.log("error")
+	        		}
+	        	})
+
+	        	$.ajax({
+	        		method : "POST",
+	        		url : window.location.href + '/metrics',
+	        		data : $('form').serialize(),
+	        		success : function(result){
+	        			var metrics = JSON.parse(result);
+	        			$("#num_models").text(metrics['num_models']);
+	        			$("#price_comp").text(metrics['price_comp']);
+	        			$("#top_dealer").text(metrics['top_dealer']);
+	        			$("top_dealer_sold").text(metrics['top_dealer_sold']);
+
+	        		},
+	        		error : function(){
+	        			console.log("error")
+	        		}
+	        	})
+			}
+        });
+	</script>
+
+	<script type="text/javascript">
+		$(function () {
+	        $("form#main").change(function(e){
+	        	e.preventDefault();
+	        	$.ajax({
+	        		method : "POST",
+	        		url : window.location.href + '/proba',
+	        		data : $('form').serialize(),
+	        		success : function(result){
+	        			var json_result = JSON.parse(result);
+	        			var proba= json_result['proba'];
+
+	        			$('#chance').css({
+									"background":'rgb('+ (100-proba)/100*255 + ','+proba/100*255+',0)',
+									"width":proba+'%',
+						});
+						$('#chance').text(proba+'%');
+	        		},
+	        		error : function(){
+	        			console.log("error")
+	        		}
+	        	})
+
+
+	        })
+	    
+		});
+	</script>
+
+<!--===============================================================================================-->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!--===============================================================================================-->
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.min.js"></script>
+	<script src="{{ url_for('static',filename='js/main.js')}}"></script>
+
+</body>
+</html>

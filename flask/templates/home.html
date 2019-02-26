@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icons/favicon.png')}}"/>
 	<!--===============================================================================================-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Rubik:400,500" rel="stylesheet">
 	<!--===============================================================================================-->
@@ -14,12 +16,11 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='select2/select2.min.css') }}">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main-home.css')}}">
 
 	<title> Ask Ah Seng </title>
 </head>
 <body>
-
 	<div class='form-container'>
 
 
@@ -39,7 +40,7 @@
 					<span class='label-input'> Original Year and Month of Registration</span>
 					<div class="form-row">
 					    <div class="col">
-					    	<select class='month-dropdown form-control ' id='reg_month' name='reg_month'></select>
+					    	<select class='month-dropdown form-control' id='reg_month' name='reg_month'></select>
 					    </div>
 					    <div class="col">
 					      <input type="text" class="form-control select2-container--default" id='reg_year' name='reg_year'placeholder="2010">
@@ -111,6 +112,7 @@
 
 			</form>
 		</div>
+
 	</div>
 	<!--===============================================================================================-->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -118,31 +120,20 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='sweetalert2.all.js') }}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="{{ url_for('static',filename='select2/select2.min.js') }}"></script>
 
-	<script type="text/javascript">
-		$(function () {
-	        $("button#predict").click(function(e){
-	        	e.preventDefault();
-	        	$.ajax({
-	        		method : "POST",
-	        		url : window.location.href + 'results',
-	        		data : $('form').serialize(),
-	        		success : function(result){
-	        			var json_result = JSON.parse(result);
-	        			var price= json_result['price'];
-	        			swal('Predicted car price is $'+price, '','success')
-	        		},
-	        		error : function(){
-	        			console.log("error")
-	        		}
-	        	})
-	        })
-	    
-		});
-	</script>
+
+<!-- 	<script type="text/javascript">
+	$(function(){
+		$(".swal-button swal-button--analysis").click(function(e){
+
+				})
+	})
+	</script> -->
+
+
 
 	<script type="text/javascript">
 		$(function () {
@@ -217,7 +208,7 @@
 				    },
 				    {
 				        'id': 5,
-				        'text': 'May'
+				        'text': 'Jun'
 				    },				  
 				    {
 				        'id': 6,
@@ -256,6 +247,38 @@
 		});
 	</script>
 
+
+	<script type="text/javascript">
+		$(function () {
+	        $("button#predict").click(function(e){
+	        	e.preventDefault();
+	        	$.ajax({
+	        		method : "POST",
+	        		url : window.location.href + 'results',
+	        		data : $('form').serialize(),
+	        		success : function(result){
+	        			var json_result = JSON.parse(result);
+	        			var price= json_result['price'];
+	        			var results=json_result['results'];
+	        			swal({
+							  title: "Ah Seng Says",
+							  text: "Limpei think your car can sell for $"+price,
+							  icon: "success",
+							  button: true,
+
+							}).then(function(){
+								window.location.href= window.location.href+'dashboard'
+							});
+
+	        		},
+	        		error : function(){
+	        			console.log("error")
+	        		}
+	        	})
+	        })
+	    
+		});
+	</script>
 
 </body>
 </html>
