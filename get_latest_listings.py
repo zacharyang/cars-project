@@ -28,12 +28,6 @@ get_current_listings="""
 if __name__== '__main__':
 
 
-    ## Open connection to DB # 
-
-    def connect():
-        
-        return psycopg2.connect(host=DB_URL,database="sgcarmart", user=DB_USER, password=DB_PASSWORD)
-
     engine = create_engine('postgresql://',creator=connect)
 
     # Collect latest listings # 

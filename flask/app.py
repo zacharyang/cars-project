@@ -118,7 +118,7 @@ def parf_calculator(arf,veh_age_mths):
         return 0.75*(arf)
     if 5<=veh_age<10:
         return (0.75-0.05*(veh_age-4))*(arf)
-    if x.veh_age>=10:
+    if veh_age>=10:
         return 0
 
 def arf_calculator(x):
@@ -219,6 +219,8 @@ def results_parser(results):
 
     # Generate list to match model dummies # 
     model_v=[1 if m==model else 0 for m in models]
+
+    print(len(model_v))
 
     results['model_v']=model_v
 

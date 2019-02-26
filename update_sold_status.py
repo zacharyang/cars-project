@@ -86,10 +86,6 @@ def update_sold_status(update_df):
 if __name__ == '__main__':
 
 
-    def connect():
-        
-        return psycopg2.connect(host=DB_URL,database="sgcarmart", user=DB_USER, password=DB_PASSWORD)
-
     engine = create_engine('postgresql://',creator=connect)
 
 
